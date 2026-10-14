@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project A</title>
+    <style>
+      body {
+        max-width: 850px;
+        margin: 40px auto;
+        padding: 0 20px;
+        font-family: Arial, sans-serif;
+        line-height: 1.5;
+      }
+
+      section {
+        margin: 20px 0;
+        padding: 16px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+      }
+
+      input[type="text"] {
+        width: 95%;
+        padding: 8px;
+        margin: 8px 0;
+      }
+
+      button {
+        padding: 8px 12px;
+        margin: 4px;
+        cursor: pointer;
+      }
+
+      .result {
+        padding: 12px;
+        background: #eef5ee;
+        overflow-wrap: anywhere;
+      }
+
+      .error {
+        padding: 12px;
+        background: #fceaea;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Система утилит Project A</h1>
+    <p>Веб-приложение использует библиотеку функций Project B.</p>
+
+    <section>
+      <h2>Работа с датами</h2>
+
+      <form method="post">
+        <button name="operation" value="current_date">
+          Получить текущую дату
+        </button>
+      </form>
+
+      <form method="post">
+        <input type="hidden" name="operation" value="format_date" />
+        <label for="date">Дата в формате YYYY-MM-DD:</label>
+        <input
+          id="date"
+          type="text"
+          name="value"
+          placeholder="2026-10-14"
+          required
+        />
+        <button type="submit">Форматировать дату</button>
+      </form>
+    </section>
+
+    <section>
+      <h2>Работа со строками</h2>
+
+      <form method="post">
+        <input type="text" name="value" placeholder="Введите текст" required />
+
+        <button name="operation" value="reverse">Перевернуть строку</button>
+
+        <button name="operation" value="capitalize">
+          Заглавные буквы слов
+        </button>
+      </form>
+    </section>
+
+    <section>
+      <h2>Работа с файлами</h2>
+
+      <form method="post">
+        <input type="text" name="value" placeholder="Текст для сохранения" />
+
+        <button name="operation" value="save_file">Сохранить текст</button>
+        <button name="operation" value="read_file">Прочитать файл</button>
+        <button name="operation" value="file_info">Информация о файле</button>
+      </form>
+    </section>
+
+    {% if result is not none %}
+    <section>
+      <h2>Результат</h2>
+      <div class="result">{{ result }}</div>
+    </section>
+    {% endif %} {% if error %}
+    <section>
+      <h2>Ошибка</h2>
+      <div class="error">{{ error }}</div>
+    </section>
+    {% endif %}
+  </body>
+</html>
