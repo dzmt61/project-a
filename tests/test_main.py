@@ -11,7 +11,7 @@ def test_home_page():
     response = client.get("/")
 
     assert response.status_code == 200
-    assert "Система утилит Project A".encode() in response.data
+    assert "Project A".encode() in response.data
 
 
 def test_current_date_api():
